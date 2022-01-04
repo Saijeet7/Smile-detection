@@ -14,8 +14,11 @@ while True:
     #If there's an error, abort
     if not successful_frame_read:
         break
+
+    #Change to grayScale
+    frame_grayscale = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     #Show the current frame
-    cv2.imshow('Smile detection', frame)
+    cv2.imshow('Smile detection', frame_grayscale)
     #Display
     cv2.waitKey(1)
 
