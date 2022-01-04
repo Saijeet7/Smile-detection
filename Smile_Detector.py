@@ -17,8 +17,16 @@ while True:
 
     #Change to grayScale
     frame_grayscale = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
+    #Detect faces first
+    faces = face_detector.detectMultiScale(frame_grayscale)
+
+    #Face detection rectangle
+    for (x, y, w, h) in faces:
+        cv2.rectangle(frame, (x,y), (x+w, y+h), (100, 200, 50), 4)
+
     #Show the current frame
-    cv2.imshow('Smile detection', frame_grayscale)
+    cv2.imshow('Smile detection', frame)
     #Display
 
     #Dont autoclose 
