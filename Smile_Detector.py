@@ -20,7 +20,13 @@ while True:
     #Show the current frame
     cv2.imshow('Smile detection', frame_grayscale)
     #Display
-    cv2.waitKey(1)
+
+    #Dont autoclose 
+    key = cv2.waitKey(1)
+    
+    #Press Q for quit
+    if key ==81 or key==113:
+        break
 
 #Clean up
 webcam.release()
