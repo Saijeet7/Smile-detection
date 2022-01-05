@@ -20,10 +20,12 @@ while True:
 
     #Detect faces first
     faces = face_detector.detectMultiScale(frame_grayscale)
-
+    smiles = smile_detector.detectMultiScale(frame_grayscale, scaleFactor=1.7, minNeighbors=20)
     #Face detection rectangle
     for (x, y, w, h) in faces:
         cv2.rectangle(frame, (x,y), (x+w, y+h), (100, 200, 50), 4)
+    for (x, y, w, h) in smiles:
+        cv2.rectangle(frame, (x,y), (x+w, y+h), (50, 50, 200), 4)
 
     #Show the current frame
     cv2.imshow('Smile detection', frame)
