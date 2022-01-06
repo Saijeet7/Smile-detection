@@ -3,6 +3,7 @@ import cv2
 #Face Classifier
 face_detector = cv2.CascadeClassifier('haarcascade_frontface.xml')
 smile_detector = cv2.CascadeClassifier('haarcascade_smile.xml')
+eye_detector = cv2.CascadeClassifier('haarcascade_eye.xml')
 
 #Grab webcam feed
 webcam = cv2.VideoCapture(0)
