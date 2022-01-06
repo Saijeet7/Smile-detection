@@ -31,8 +31,12 @@ while True:
 
         smiles = smile_detector.detectMultiScale(face_grayscale, scaleFactor=1.7, minNeighbors=20)
         #Find all smiles in the face
-        for (x_, y_, w_, h_) in smiles:
-            cv2.rectangle(the_face, (x_,y_), (x_+w_, y_+h_), (50, 50, 200), 4)
+        #for (x_, y_, w_, h_) in smiles:
+        #    cv2.rectangle(the_face, (x_,y_), (x_+w_, y_+h_), (50, 50, 200), 4)
+      
+        #Label this face is smiling
+        if len(smiles) > 0:
+            cv2.putText(frame, 'Smiling', (x, y+h+40), fontScale =3, fontFace = cv2.FONT_HERSHEY_PLAIN, color=(255,255,255))
 
     #Show the current frame
     cv2.imshow('Smile detection', frame)
