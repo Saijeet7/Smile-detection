@@ -31,13 +31,17 @@ while True:
         face_grayscale = cv2.cvtColor(the_face, cv2.COLOR_BGR2GRAY)
 
         smiles = smile_detector.detectMultiScale(face_grayscale, scaleFactor=1.7, minNeighbors=20)
+        eyes = eye_detector.detectMultiScale(face_grayscale, scaleFactor=1.1, minNeighbors=10)
         #Find all smiles in the face
         #for (x_, y_, w_, h_) in smiles:
         #    cv2.rectangle(the_face, (x_,y_), (x_+w_, y_+h_), (50, 50, 200), 4)
       
         #Label this face is smiling
         if len(smiles) > 0:
-            cv2.putText(frame, 'Smiling', (x, y+h+40), fontScale =3, fontFace = cv2.FONT_HERSHEY_PLAIN, color=(255,255,255))
+            cv2.putText(frame, 'Smiling', (x, y+h+40), fontScale =4, fontFace = cv2.FONT_HERSHEY_PLAIN, color=(255,255,255))
+        for (x_, y_, w_, h_) in eyes:
+            cv2.rectangle(the_face, (x_,y_), (x_+w_, y_+h_), (255, 255, 255), 4)
+
 
     #Show the current frame
     cv2.imshow('Smile detection', frame)
